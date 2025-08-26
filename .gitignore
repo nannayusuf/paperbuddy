@@ -9,3 +9,8 @@ wheels/
 # Virtual environments
 .venv
 uv.lock
+
+data/chroma/
+*.pyc
+__pycache__/
+*.sqlite3

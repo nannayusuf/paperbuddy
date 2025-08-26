@@ -1,0 +1,11 @@
+search_task:
+  description: >
+    Busque no banco vetorial trechos que respondam exatamente:
+    "{user_question}"
+  expected_output: "Trechos relevantes dos PDFs"
+
+explain_task:
+  description: >
+    Com base nos trechos encontrados, explique de forma didática
+     Faça 1 pergunta de follow-up.
+  expected_output: "Explicação simples + 1 pergunta"
