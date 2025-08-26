@@ -1,24 +1,21 @@
-from __future__ import annotations
-from pathlib import Path
-from typing import List, Tuple, Optional, Dict, Any
-from langchain_chroma import Chroma
-try:
-    from langchain_huggingface import HuggingFaceEmbeddings
-except ImportError:
-    from langchain_community.embeddings import HuggingFaceEmbeddings
-from langchain.schema import Document
+import chromadb
+from sentence_transformers import SentenceTransformer
 
-ROOT = Path(__file__).resolve().parents[3]
-DB_DIR = ROOT / "data" / "chroma"
-COLLECTION = "paperbuddy"
-EMBED = "sentence-transformers/all-MiniLM-L6-v2"
+client = chromadb.PersistentClient(path="./chroma_db")
+collection = client.get_or_create_collection("papers")
+model = SentenceTransformer('BAAI/bge-m3')
 
-def _db(db_dir: Path | str = DB_DIR) -> Chroma:
-    emb = HuggingFaceEmbeddings(model_name=EMBED)
-    return Chroma(collection_name=COLLECTION, embedding_function=emb, persist_directory=str(db_dir))
-
-def search(query: str, k: int = 5, where: Optional[Dict[str, Any]] = None) -> List[Tuple[Document, float]]:
-    return _db().similarity_search_with_relevance_scores(query, k=k, filter=where)
-
-def search_mmr(query: str, k: int = 6, fetch_k: int = 30, where: Optional[Dict[str, Any]] = None) -> List[Document]:
-    return _db().max_marginal_relevance_search(query, k=k, fetch_k=fetch_k, filter=where)
+def vector_search_tool(query: str, filter_type: str = None) -> list:
+    """Ferramenta de busca vetorial para agentes"""
+    emb = model.encode(query).tolist()
+    
+    where = {"type": filter_type} if filter_type else None
+    
+    results = collection.query(
+        query_embeddings=[emb],
+        n_results=5,
+        where=where
+    )
+    
+    return [{"content": doc, "metadata": meta} 
+            for doc, meta in zip(results["documents"][0], results["metadatas"][0])]

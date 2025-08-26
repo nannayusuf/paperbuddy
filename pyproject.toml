@@ -1,16 +1,12 @@
 [project]
 name = "paperbuddy"
 version = "0.1.0"
-description = "..."
-readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
-    "chromadb>=0.5.23",
-    "crewai[tools]>=0.159.0",
-    "langchain-chroma>=0.2.3",
-    "pypdf>=5.9.0",
-    "python-dotenv>=1.1.1",
-    "pyyaml>=6.0.2",
-    "sentence-transformers>=5.1.0",
-    "streamlit>=1.48.1",
+    "crewai>=0.30",
+    "docling>=2.0",
+    "chromadb>=0.5",
+    "sentence-transformers>=3.0",
+    "fastapi>=0.110",
+    "uvicorn[standard]>=0.29",
 ]
