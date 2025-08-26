@@ -14,3 +14,12 @@ data/chroma/
 *.pyc
 __pycache__/
 *.sqlite3
+
+# Local
+.envrc
+uv_sync.log
+.venv/
+__pycache__/
+*.pyc
+data/chroma/
+data/pdfs/*.pdf
