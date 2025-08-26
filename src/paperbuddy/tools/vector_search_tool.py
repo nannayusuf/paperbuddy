@@ -1,6 +1,6 @@
 from __future__ import annotations
 from typing import List
-from crewai_tools import tool
+from crewai.tools import tool
 from paperbuddy.tools.vector_search import search as vs_search
 
 @tool
