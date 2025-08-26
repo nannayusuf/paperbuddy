@@ -23,3 +23,13 @@ __pycache__/
 *.pyc
 data/chroma/
 data/pdfs/*.pdf
+
+# Local
+.venv/
+__pycache__/
+*.pyc
+.envrc
+uv_sync.log
+apply_paperbuddy_patch.sh
+data/chroma/
+data/pdfs/*.pdf

@@ -1,5 +1,5 @@
 import streamlit as st
-from src.paperbuddy.crew import make_crew
+from paperbuddy.crew import make_crew
 
 st.set_page_config(page_title="PaperBuddy")
 st.title("📚 PaperBuddy – Assistente de Estudos com CrewAI")

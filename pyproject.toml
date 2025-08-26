@@ -3,10 +3,15 @@ name = "paperbuddy"
 version = "0.1.0"
 requires-python = ">=3.11"
 dependencies = [
-    "crewai>=0.30",
+    "crewai[tools]>=0.159.0",
     "docling>=2.0",
     "chromadb>=0.5",
     "sentence-transformers>=3.0",
     "fastapi>=0.110",
     "uvicorn[standard]>=0.29",
+    "streamlit>=1.48.1",
+    "langchain-chroma>=0.2.3",
+    "langchain-community>=0.3.28",
+    "langchain-huggingface>=0.3.1",
+    "pypdf>=5.9.0",
 ]
