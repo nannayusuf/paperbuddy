@@ -33,3 +33,23 @@ uv_sync.log
 apply_paperbuddy_patch.sh
 data/chroma/
 data/pdfs/*.pdf
+
+.venv/
+__pycache__/
+*.pyc
+.envrc
+uv_sync.log
+data/chroma/
+data/pdfs/*.pdf
+
+# Vector DB
+data/chroma/
+
+# Virtual envs
+.venv/
+venv/
+bin/
+lib/
+lib64/
+include/
+pyvenv.cfg
